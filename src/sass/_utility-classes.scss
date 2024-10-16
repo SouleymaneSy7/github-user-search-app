@@ -1,4 +1,5 @@
 @use "./functions" as *;
+@use "./mixins" as *;
 
 .visually-hidden {
   display: inline-block;
@@ -14,4 +15,8 @@
   padding: 0;
 
   overflow: hidden;
+}
+
+.flex {
+  @include x-flex-row;
 }
