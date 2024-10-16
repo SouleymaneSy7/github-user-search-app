@@ -1,5 +1,14 @@
+import React from "react";
+import Header from "./components/Header";
+import Forms from "./components/Forms";
+
 const App = () => {
-  return <div>Hello From React App</div>;
+  return (
+    <React.Fragment>
+      <Header />
+      <Forms />
+    </React.Fragment>
+  );
 };
 
 export default App;
