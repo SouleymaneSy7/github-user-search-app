@@ -1,11 +1,15 @@
-import { type ComponentPropsWithoutRef, type ReactNode } from "react";
+import React from "react";
 
 type ButtonPropsType = {
-  children: ReactNode;
+  children: React.ReactNode;
   type: "button" | "submit";
-} & ComponentPropsWithoutRef<"button">;
+} & React.ComponentPropsWithoutRef<"button">;
 
-const Buttons = ({ children, type, ...delegatedProps }: ButtonPropsType) => {
+const Buttons: React.FC<ButtonPropsType> = ({
+  children,
+  type,
+  ...delegatedProps
+}) => {
   return (
     <button type={type} {...delegatedProps}>
       {children}
