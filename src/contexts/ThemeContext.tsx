@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-refresh/only-export-components */
 import React, { FC, ReactNode, useState, useContext } from "react";
 
@@ -19,12 +20,29 @@ export const ThemeContextProvider: FC<ThemeContextProviderProps> = ({
 }) => {
   const [theme, setTheme] = useState<ThemeTypes>("light");
 
-  const handleThemeSwitcher = () => {
+  const handleThemeSwitcher = React.useCallback(() => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
     document.querySelector("body")?.setAttribute("data-theme", newTheme);
     localStorage.setItem("theme", newTheme);
-  };
+
+    const isDarkTheme = window.matchMedia(
+      "(prefers-color-sheme: dark)"
+    ).matches;
+    if (isDarkTheme) {
+      setTheme(newTheme);
+      document.querySelector("body")?.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+    } else {
+      setTheme(newTheme);
+      document.querySelector("body")?.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+    }
+  }, [theme]);
+
+  React.useEffect(() => {
+    handleThemeSwitcher();
+  }, []);
 
   const contextValue: ThemeContextType = { theme, handleThemeSwitcher };
 
