@@ -18,7 +18,7 @@ const Forms: FC = () => {
   };
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
+    <form className="form | container" onSubmit={handleSubmit}>
       <label htmlFor={inputID} className="form__label">
         <SearchIcon />
         <VisuallyHidden>Search Icons</VisuallyHidden>

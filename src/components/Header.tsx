@@ -7,9 +7,9 @@ const Header: React.FC = () => {
   const { theme, handleThemeSwitcher } = useThemeContext();
 
   return (
-    <header>
+    <header className="header | container">
       <a href="#" className="header__logo">
-        DevFinder
+        Developper's <span>Finder</span>
       </a>
       <Buttons
         type="button"
@@ -17,19 +17,19 @@ const Header: React.FC = () => {
         onClick={handleThemeSwitcher}
       >
         {theme === "dark" ? (
-          <h2 className="header--theme-switcher">
-            Light{" "}
+          <React.Fragment>
+            Light
             <span className="header--btn__icon">
               <SunIcon />
             </span>
-          </h2>
+          </React.Fragment>
         ) : (
-          <h2 className="header--theme-switcher">
-            Dark{" "}
+          <React.Fragment>
+            Dark
             <span className="header--btn__icon">
               <MoonIcon />
             </span>
-          </h2>
+          </React.Fragment>
         )}
       </Buttons>
     </header>
