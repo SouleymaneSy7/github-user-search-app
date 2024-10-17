@@ -12,14 +12,14 @@ interface UserDataTypes {
   avatar_url: string;
   name: string;
   company: string | null;
-  blog: string | undefined;
+  blog: string;
   location: string | null;
   bio: string | null;
   twitter_username: string | null;
   public_repos: number | null | undefined;
   followers: number | null;
   following: number | null;
-  created_at: string | null;
+  created_at: string;
 }
 
 type ViewStateTypes =
