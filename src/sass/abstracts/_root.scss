@@ -1,0 +1,12 @@
+@use "./functions";
+
+:root {
+  // Fonts
+  --font-family: "Space Mono", monospace;
+
+  --fw-bold: 700;
+  --fw-regular: 400;
+
+  // Container
+  --container-max-width: 730px;
+}

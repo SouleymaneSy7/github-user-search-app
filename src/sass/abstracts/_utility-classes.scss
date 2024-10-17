@@ -1,0 +1,35 @@
+@use "./functions" as *;
+@use "./mixins" as *;
+@use "./typography" as *;
+
+.visually-hidden {
+  display: inline-block;
+  position: absolute;
+
+  height: rem(1px);
+  width: rem(1px);
+
+  border: 0;
+  clip: rect(0 0 0 0);
+
+  margin: rem(-1px);
+  padding: 0;
+
+  overflow: hidden;
+}
+
+.flex {
+  @include x-flex-row;
+}
+
+body[data-theme="light"] button:focus,
+body[data-theme="light"] input:focus,
+body[data-theme="light"] a:focus {
+  outline: dotted hsl(217, 20%, 51%) rem(1.75px);
+}
+
+body[data-theme="dark"] button:focus,
+body[data-theme="dark"] input:focus,
+body[data-theme="dark"] a:focus {
+  outline: dotted hsl(222, 44%, 70%) rem(1.75px);
+}
