@@ -4,11 +4,11 @@ type VisuallyHiddenPropsType = {
   children: ReactNode;
 } & ComponentPropsWithoutRef<"span">;
 
-const VisuallyHidden = ({
+const VisuallyHidden: React.FC<VisuallyHiddenPropsType> = ({
   children,
   ...delegatedProps
-}: VisuallyHiddenPropsType) => {
-  const [forceShow, setForceShow] = React.useState(false);
+}) => {
+  const [forceShow, setForceShow] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     if (import.meta.env.DEV !== true) {

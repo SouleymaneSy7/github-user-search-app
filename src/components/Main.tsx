@@ -1,3 +1,5 @@
+import React from "react";
+
 import Title from "./Title";
 import {
   CompanyIcon,
@@ -5,75 +7,95 @@ import {
   LocationIcon,
   TwitterIcon,
 } from "../icons/Icons.component";
-import React from "react";
+import { useUserContext } from "../contexts/UserContext";
 
-const Main = () => {
-  return (
-    <main className="user-contents">
-      {/* Loading */}
+const Main: React.FC = () => {
+  const { viewState, userData } = useUserContext();
+
+  if (userData === null) {
+    return (
+      <React.Fragment>
+        <div className="starter">You must search a Github username!</div>
+      </React.Fragment>
+    );
+  }
+
+  if (viewState.status === "loading") {
+    return (
       <React.Fragment>
         <div className="loading">Loading...</div>
       </React.Fragment>
+    );
+  }
 
-      {/* User Contents */}
+  if (viewState.status === "errors") {
+    return (
       <React.Fragment>
+        <div className="errors">Errors for Fetching Data!!!</div>
+      </React.Fragment>
+    );
+  }
+
+  return (
+    <main className="main | container">
+      <section className="user-contents">
         <div className="user-contents__top | flex">
           <div className="user__profile-img">
-            <img src="" alt="" />
+            <img
+              src={userData.avatar_url}
+              alt={`${userData.name} profile picture`}
+            />
           </div>
           <div className="user__information">
-            <h1 className="user__name">Souleymane Sy</h1>
-            <p className="user__pseudo-name">@souleymanesy7</p>
-            <time dateTime="07-08-2022">Joined 07 aug 2022</time>
+            <h1 className="user__name">{userData.name}</h1>
+            <p className="user__pseudo-name">@{userData.login}</p>
+            <time dateTime="07-08-2022">{userData.created_at}</time>
           </div>
         </div>
 
         <div className="user-contents__bottom">
-          <p className="user__quotes">Some Text</p>
+          <p className="user__bio">{userData.bio}</p>
 
           <div className="user__stats">
             <div className="stats">
               <p>Repos</p>
-              <Title level="h2">73</Title>
+              <Title level="h2">{userData.public_repos} </Title>
             </div>
             <div className="stats">
               <p>Followers</p>
-              <Title level="h2">31</Title>
+              <Title level="h2">{userData.followers}</Title>
             </div>
             <div className="stats">
               <p>Following</p>
-              <Title level="h2">113</Title>
+              <Title level="h2">{userData.following}</Title>
             </div>
           </div>
 
           <ul className="user__links">
             <li className="user__links-container | flex">
               <LocationIcon />
-              Guinée, Conakry
+              {userData.location ? userData.location : "Not Available"}
             </li>
 
             <li className="user__links-container | flex">
-              <TwitterIcon />
-              @souleymanesy43
+              <TwitterIcon />@
+              {userData.twitter_username
+                ? userData.twitter_username
+                : "Not Available"}
             </li>
 
             <li className="user__links-container | flex">
               <LinkIcon />
-              souleymane-sy.dev
+              {userData.blog ? userData.blog : "Not Available"}
             </li>
 
             <li className="user__links-container | flex">
               <CompanyIcon />
-              Google, Co
+              {userData.company ? userData.company : "Not Available"}
             </li>
           </ul>
         </div>
-      </React.Fragment>
-
-      {/* Errors */}
-      <React.Fragment>
-        <div className="errors">Errors</div>
-      </React.Fragment>
+      </section>
     </main>
   );
 };

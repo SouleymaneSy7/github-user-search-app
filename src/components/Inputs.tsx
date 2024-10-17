@@ -1,11 +1,11 @@
-import { type ComponentPropsWithoutRef } from "react";
+import React from "react";
 
 type InputsProps = {
   id?: string;
   type: "text" | "email" | "search";
-} & ComponentPropsWithoutRef<"input">;
+} & React.ComponentPropsWithoutRef<"input">;
 
-const Inputs = ({ id, type, ...delegatedProps }: InputsProps) => {
+const Inputs: React.FC<InputsProps> = ({ id, type, ...delegatedProps }) => {
   return <input id={id} type={type} {...delegatedProps} />;
 };
 

@@ -1,13 +1,10 @@
 import React from "react";
 import Buttons from "./Buttons";
 import { MoonIcon, SunIcon } from "../icons/Icons.component";
+import { useThemeContext } from "../contexts/ThemeContext";
 
-const Header = () => {
-  const [themeState, setThemeState] = React.useState(false);
-
-  const handleThemeSwitcher = () => {
-    setThemeState(!themeState);
-  };
+const Header: React.FC = () => {
+  const { theme, handleThemeSwitcher } = useThemeContext();
 
   return (
     <header>
@@ -19,7 +16,7 @@ const Header = () => {
         className="header--btn"
         onClick={handleThemeSwitcher}
       >
-        {themeState === true ? (
+        {theme === "dark" ? (
           <h2 className="header--theme-switcher">
             Light{" "}
             <span className="header--btn__icon">
