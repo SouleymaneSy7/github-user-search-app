@@ -21,7 +21,7 @@ const Forms: FC = () => {
     <form className="form | container" onSubmit={handleSubmit}>
       <label htmlFor={inputID} className="form__label">
         <SearchIcon />
-        <VisuallyHidden>Search Icons</VisuallyHidden>
+        <VisuallyHidden>Search for a Github username.</VisuallyHidden>
       </label>
       <Inputs
         id={inputID}
