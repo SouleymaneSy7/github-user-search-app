@@ -4,7 +4,7 @@
 
 ## Links
 
-- Live Site Demo URL: [Live Site Demo](https://your-live-site-url.com)
+- Live Site Demo URL: [Live Site Demo](https://github-user-search-app-self.vercel.app/)
 
 ## Welcome! 👋
 
