@@ -2,6 +2,7 @@ import React from "react";
 import Buttons from "./Buttons";
 import { MoonIcon, SunIcon } from "../icons/Icons.component";
 import { useThemeContext } from "../contexts/ThemeContext";
+import VisuallyHidden from "./VisuallyHidden";
 
 const Header: React.FC = () => {
   const { theme, handleThemeSwitcher } = useThemeContext();
@@ -22,6 +23,7 @@ const Header: React.FC = () => {
             <span className="header--btn__icon">
               <SunIcon />
             </span>
+            <VisuallyHidden>Toggle the theme to dark.</VisuallyHidden>
           </React.Fragment>
         ) : (
           <React.Fragment>
@@ -29,6 +31,7 @@ const Header: React.FC = () => {
             <span className="header--btn__icon">
               <MoonIcon />
             </span>
+            <VisuallyHidden>Toggle the theme to light.</VisuallyHidden>
           </React.Fragment>
         )}
       </Buttons>
