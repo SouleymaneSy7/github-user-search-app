@@ -1,13 +1,15 @@
 import React from "react";
 
-import Title from "./Title";
+import { useUserContext } from "../contexts/UserContext";
+
 import {
   CompanyIcon,
   LinkIcon,
   LocationIcon,
   TwitterIcon,
 } from "../icons/Icons.component";
-import { useUserContext } from "../contexts/UserContext";
+
+import Title from "./Title";
 import ErrorsPage from "./ErrorsPage";
 import Loader from "./Loader";
 
@@ -34,7 +36,11 @@ const Main: React.FC = () => {
   }
 
   if (viewState.status === "errors") {
-    return <ErrorsPage />;
+    return (
+      <React.Fragment>
+        <ErrorsPage />
+      </React.Fragment>
+    );
   }
 
   const dateResult = new Date(userData!.created_at).toLocaleDateString("fr-FR");
