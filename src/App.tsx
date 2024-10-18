@@ -3,6 +3,7 @@ import Main from "./components/Main";
 import { UserContextProvider } from "./contexts/UserContext";
 import { ThemeContextProvider } from "./contexts/ThemeContext";
 import Forms from "./components/Forms";
+import Attribution from "./components/Attribution";
 
 const App = () => {
   const selectedTheme = localStorage.getItem("theme");
@@ -17,6 +18,7 @@ const App = () => {
         <Header />
         <Forms />
         <Main />
+        <Attribution />
       </ThemeContextProvider>
     </UserContextProvider>
   );
