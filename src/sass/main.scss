@@ -2,38 +2,41 @@
 
 // Light Mode
 body[data-theme="light"] {
-  --color-primary: hsl(212, 100%, 50%);
-  --color-primary-hover: hsl(212, 100%, 69%);
+  --color-primary: hsl(240, 95%, 62%);
+  --color-primary-hover: hsl(240, 58%, 66%);
   --color-text-700: hsl(217, 21%, 21%);
   --color-text-400: hsl(217, 35%, 45%);
   --color-text-300: hsl(217, 20%, 51%);
+  --color-text-btn: hsl(0, 0%, 100%);
   --color-text-search: hsl(220, 18%, 16%);
   --color-text-search-placeholder: hsl(217, 35%, 45%);
-  --color-body-background: hsl(227, 100%, 98%);
+  --color-body-background: hsl(200, 93%, 88%);
   --color-elements-background: hsl(0, 0%, 100%);
-  --color-stats-background: var(--color-body-background);
+  --color-stats-background: hsl(227, 100%, 98%);
   --color-theme-switch-btn-hover: hsl(220, 18%, 16%);
   --color-errors: hsl(0, 92%, 62%);
 }
 
 // Dark Mode
 body[data-theme="dark"] {
-  --color-primary: hsl(212, 100%, 50%);
-  --color-primary-hover: hsl(212, 100%, 69%);
+  --color-primary: hsl(225, 100%, 75%);
+  --color-primary-hover: hsl(240, 58%, 66%);
   --color-text-700: hsl(0, 0%, 100%);
   --color-text-400: hsl(0, 0%, 100%);
   --color-text-300: hsl(0, 0%, 100%);
+  --color-text-btn: hsl(217, 21%, 21%);
   --color-text-search: hsl(0, 0%, 100%);
   --color-text-search-placeholder: hsl(0, 0%, 100%);
-  --color-body-background: hsl(220, 40%, 13%);
-  --color-elements-background: hsl(222, 41%, 20%);
-  --color-stats-background: var(--color-body-background);
+  --color-body-background: hsl(209, 41%, 16%);
+  --color-elements-background: hsl(228, 15%, 6%);
+  --color-stats-background: hsl(220, 40%, 13%);
   --color-theme-switch-btn-hover: hsl(222, 44%, 70%);
   --color-errors: hsl(0, 92%, 62%);
 }
 
 body {
   font-family: var(--font-family);
+  font-weight: var(--fw-regular);
   font-size: $fluid-15-16;
   color: var(--color-text-700);
 
@@ -68,7 +71,7 @@ body {
   margin-block-end: rem(32px);
 
   &__logo {
-    font-size: rem(20px);
+    font-size: $fluid-18-20;
     color: var(--color-text-700);
     text-decoration: none;
     font-weight: var(--fw-bold);
@@ -89,7 +92,7 @@ body {
     align-items: center;
     gap: rem(12px);
 
-    font-size: rem(15px);
+    font-size: $fluid-14-15;
     font-weight: var(--fw-bold);
     text-transform: uppercase;
     color: var(--color-text-300);
@@ -99,6 +102,12 @@ body {
     cursor: pointer;
 
     transition: color 200ms ease-in-out;
+
+    &__icon,
+    &__icon svg {
+      width: rem(20px);
+      height: rem(20px);
+    }
 
     & span svg path {
       transition: fill 200ms ease-in-out;
@@ -114,6 +123,7 @@ body {
 
 .form {
   --height-size: #{rem(40px)};
+
   display: flex;
   align-items: center;
   gap: rem(16px);
@@ -147,12 +157,11 @@ body {
     outline: none;
     background-color: var(--color-elements-background);
 
-    font-size: rem(17px);
+    font-size: $fluid-15-17;
     color: var(--color-text-search-placeholder);
     letter-spacing: rem(1px);
 
-    flex: 1 1 100%;
-
+    width: 100%;
     height: var(--height-size);
   }
 
@@ -162,17 +171,23 @@ body {
     border: none;
     outline: none;
 
-    width: rem(100px);
+    width: min(100%, rem(100px));
     height: var(--height-size);
 
-    font-size: rem(16px);
+    font-size: $fluid-15-16;
     font-weight: var(--fw-bold);
-    color: white;
+    color: var(--color-text-btn);
 
     background-color: var(--color-primary);
 
     padding-inline: rem(18px);
+
+    transition: background 250ms ease-in-out;
     cursor: pointer;
+
+    &:hover {
+      background-color: var(--color-primary-hover);
+    }
   }
 }
 
@@ -183,9 +198,17 @@ body {
 }
 
 .user-contents__top {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: rem(56px);
+  gap: rem(32px);
   margin-block-end: rem(20px);
+
+  @include media-queries(sm) {
+    flex-direction: row;
+    margin-block-end: rem(28px);
+    gap: rem(56px);
+  }
 }
 
 .user-contents__bottom > * + * {
@@ -213,6 +236,8 @@ body {
 }
 
 .user__information {
+  text-align: center;
+
   & > :not(.user__name) {
     margin-block-start: rem(8px);
   }
@@ -236,19 +261,32 @@ body {
     color: var(--color-text-300);
     margin-block-start: rem(4px);
   }
+
+  @include media-queries(sm) {
+    & {
+      text-align: left;
+    }
+  }
 }
 
 .user__bio {
   font-size: $fluid-15-16;
   color: var(--color-text-300);
+  text-align: center;
+
+  @include media-queries(sm) {
+    text-align: left;
+  }
 }
 
 .user__stats {
   width: min(100%, rem(530px));
 
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  gap: rem(28px);
 
   background-color: var(--color-stats-background);
 
@@ -266,6 +304,10 @@ body {
       font-size: $fluid-12-14;
       color: var(--color-text-300);
     }
+  }
+
+  @include media-queries(sm) {
+    justify-content: space-between;
   }
 }
 
@@ -377,5 +419,30 @@ body {
   }
   100% {
     background-size: rem(25px) 50%, rem(25px) 50%, rem(25px) 50%;
+  }
+}
+
+.attribution {
+  text-align: center;
+  margin-block: min(6%, rem(80px));
+
+  & p {
+    font-size: $fluid-14-15;
+    color: var(--clr-light-400);
+  }
+
+  & a {
+    font-size: $fluid-15-16;
+    font-weight: var(--fw-bold);
+    color: var(--color-primary);
+
+    text-decoration: none;
+
+    transition: all 200ms ease-in-out;
+
+    &:is(:hover, :focus-visible) {
+      color: var(--color-primary-hover);
+      text-decoration: underline;
+    }
   }
 }
