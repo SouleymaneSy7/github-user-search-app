@@ -21,30 +21,3 @@
     @error 'the keyword #{$size} is not in the $breakpoints map';
   }
 }
-
-@mixin x-fluid-width($max-size) {
-  width: min(100%, $max-size);
-  margin-inline: auto;
-}
-
-@mixin x-grid-center {
-  display: grid;
-  place-items: center;
-}
-
-@mixin x-flex-row {
-  display: flex;
-  flex-direction: row;
-}
-
-@mixin x-flex-row-start {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-}
-
-@mixin x-flex-space-between {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}

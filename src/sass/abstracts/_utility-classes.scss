@@ -19,17 +19,18 @@
 }
 
 .flex {
-  @include x-flex-row;
+  display: flex;
+  flex-direction: row;
 }
 
 body[data-theme="light"] button:focus,
 body[data-theme="light"] input:focus,
 body[data-theme="light"] a:focus {
-  outline: dotted hsl(217, 20%, 51%) rem(1.75px);
+  outline: dotted hsl(217, 20%, 51%) rem(2px);
 }
 
 body[data-theme="dark"] button:focus,
 body[data-theme="dark"] input:focus,
 body[data-theme="dark"] a:focus {
-  outline: dotted hsl(222, 44%, 70%) rem(1.75px);
+  outline: dotted hsl(222, 44%, 70%) rem(2px);
 }
